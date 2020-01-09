@@ -7,3 +7,7 @@
     <button type="submit">Login</button>
   </div>
 </form>
+<br>
+Don't have an account yet? Register nów!
+
+<a href="/register.php"><button>Register</button></a>

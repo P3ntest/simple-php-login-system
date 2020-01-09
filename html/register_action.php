@@ -19,19 +19,22 @@ $result = $statement->get_result();
 
 
 if ($row = $result->fetch_object()) {
-  if (password_verify($_POST['password'], $row->password)) {
-
-    session_start();
-    $_SESSION['userid'] = $row->id;
-
-    header("Location: /dashboard.php");
-    die();
-  }else {
-    echo "Password incorrect";
-  }
+  echo "Username taken.";
 }else {
-  echo "User not found.";
+  $sql = "INSERT INTO users (username, password, email) VALUES (?, ?, ?)";
+  $statement = $mysqli->prepare($sql);
+  $statement->bind_param('sss', $username, $password, $email);
+
+//Variablen Werte zuweisen
+  $username = $_POST['username'];
+  $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+  $email = $_POST['email'];
+
+  $statement->execute();
 }
+
+header("Location: /");
+die();
 
 
   //echo $_POST['username'];
