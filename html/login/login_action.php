@@ -7,18 +7,13 @@
     die();
   }
 
-  $sql = "SELECT * FROM users WHERE username = ?";
+$sql = "SELECT * FROM users WHERE username = ?";
 $statement = $mysqli->prepare($sql);
 $statement->bind_param('s', $username);
-
 //Variablen Werte zuweisen
 $username = $_POST['username'];
-
 $statement->execute();
-
 $result = $statement->get_result();
-
-
 if ($row = $result->fetch_object()) {
   if (password_verify($_POST['password'], $row->password)) {
 

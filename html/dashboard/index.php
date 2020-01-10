@@ -14,7 +14,8 @@ if ($mysqli->connect_errno) {
  ?>
 
 <!DOCTYPE html>
-<h1> User Dashboard - <?php
+<h1> User Dashboard -
+<?php
 $sql = "SELECT username FROM users WHERE id = ?";
 $statement = $mysqli->prepare($sql);
 $statement->bind_param('i', $_SESSION['userid']);

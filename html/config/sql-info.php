@@ -4,4 +4,8 @@ $sql_database = 'login-system';
 $sql_username = 'root';
 $sql_password = '';
 $sql_port = '3306';
- ?>
+
+function query() {
+}
+
+?>
