@@ -1,5 +1,5 @@
 <?php
-  include 'sql-info.php';
+  include '/config/sql-info.php';
 
   $mysqli = new mysqli($sql_host, $sql_username, $sql_password, $sql_database);
   if ($mysqli->connect_errno) {
@@ -24,7 +24,7 @@ if ($row = $result->fetch_object()) {
     session_start();
     $_SESSION['userid'] = $row->id;
 
-    header("Location: /dashboard.php");
+    header("Location: /dashboard");
     die();
   }else {
     echo "Password incorrect";

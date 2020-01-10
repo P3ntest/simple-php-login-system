@@ -1,4 +1,4 @@
-<form action="/register_action.php" method="post">
+<form action="/register/register_action.php" method="post">
   <div class="container">
     <input type="text" placeholder="Enter Username" name="username" required>
       <br>
@@ -11,4 +11,4 @@
 </form>
 <br>
 Already have an account?
-<a href="/"><button>Login</button></a>
+<a href="/login"><button>Login</button></a>

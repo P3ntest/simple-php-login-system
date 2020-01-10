@@ -5,7 +5,7 @@ if(!isset($_SESSION['userid'])) {
   die();
 }
 
-include 'sql-info.php';
+include '/config/sql-info.php';
 
 $mysqli = new mysqli($sql_host, $sql_username, $sql_password, $sql_database);
 if ($mysqli->connect_errno) {
@@ -28,4 +28,4 @@ if ($row = $result->fetch_object()) {
   echo $row->username;
 }
 ?></h1>
-<a href="/logout_action.php">Logout</a>
+<a href="/dashboard/logout_action.php">Logout</a>

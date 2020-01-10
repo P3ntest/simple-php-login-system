@@ -1,5 +1,5 @@
 <?php
-  include 'sql-info.php';
+  include '/config/sql-info.php';
 
   $mysqli = new mysqli($sql_host, $sql_username, $sql_password, $sql_database);
   if ($mysqli->connect_errno) {
