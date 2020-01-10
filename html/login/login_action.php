@@ -1,9 +1,10 @@
 <?php
-  include '/config/sql-info.php';
+  session_start();
+  include '../config/sql-info.php';
 
   $mysqli = new mysqli($sql_host, $sql_username, $sql_password, $sql_database);
   if ($mysqli->connect_errno) {
-    die("Verbindung fehlgeschlagen: " . $mysqli->$sql_password);
+    die();
   }
 
   $sql = "SELECT * FROM users WHERE username = ?";
@@ -21,16 +22,19 @@ $result = $statement->get_result();
 if ($row = $result->fetch_object()) {
   if (password_verify($_POST['password'], $row->password)) {
 
-    session_start();
     $_SESSION['userid'] = $row->id;
 
     header("Location: /dashboard");
     die();
   }else {
-    echo "Password incorrect";
+    $_SESSION['err_code_login'] = "Password or Username incorret";
+    header("Location: /login");
+    die();
   }
 }else {
-  echo "User not found.";
+  $_SESSION['err_code_login'] = "Password or Username incorret";
+  header("Location: /login");
+  die();
 }
 
 
